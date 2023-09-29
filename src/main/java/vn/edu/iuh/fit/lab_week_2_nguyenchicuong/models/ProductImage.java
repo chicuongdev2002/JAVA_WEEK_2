@@ -1,5 +1,6 @@
 package vn.edu.iuh.fit.lab_week_2_nguyenchicuong.models;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
@@ -17,7 +18,8 @@ public class ProductImage implements Serializable
     @Column(name = "path",columnDefinition = "VARCHAR(250)")
     private String path;
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "product_id")
+    @JoinColumn(name = "product_id",referencedColumnName = "product_id")
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private Product product;
 
 }

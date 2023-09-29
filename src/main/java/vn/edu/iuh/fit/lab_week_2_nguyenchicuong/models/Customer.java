@@ -4,7 +4,6 @@ package vn.edu.iuh.fit.lab_week_2_nguyenchicuong.models;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
-import java.util.List;
 
 @Entity
 @Table(name="customer")
@@ -23,10 +22,10 @@ public class Customer implements Serializable {
     @Column(name = "phone", columnDefinition = "varchar(15)",nullable = false)
     private String phone;
 
-    @Column(name = "address", columnDefinition = "text",nullable = false)
+    @Column(name = "address", columnDefinition = "varchar(150)",nullable = false)
     private String address;
-//    @OneToMany(mappedBy = "order_id")
-//    private List<Order> orderList;
+//    @OneToMany(mappedBy = "customer ",fetch = FetchType.LAZY)
+//    private List<Order> listO;
     public Customer() {
     }
 

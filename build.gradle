@@ -40,8 +40,11 @@ dependencies {
 
   //Datatime
   implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.15.2'
-  implementation group: 'com.fasterxml.jackson.datatype', name: 'jackson-datatype-jsr310', version: '2.15.2'
+  implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.15.2'
 
+// https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient
+  implementation group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5.13'
+  implementation group: 'org.json', name: 'json', version: '20230227'
 }
 
 test {

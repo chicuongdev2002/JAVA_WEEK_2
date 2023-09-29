@@ -20,7 +20,7 @@
       <ul>
         <li><a href="#">Trang chủ</a></li>
         <li><a href="#">Sản Phẩm</a></li>
-        <li><a href="#">Liên hệ</a></li>
+        <li><a href="view/admin/admin.jsp">Admin</a></li>
         <li><a href="#">Khác</a></li>
       </ul>
       <form>

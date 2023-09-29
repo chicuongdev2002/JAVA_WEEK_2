@@ -1,7 +1,9 @@
-package vn.edu.iuh.fit.lab_week_2_nguyenchicuong.enums;
+package vn.edu.iuh.fit.lab_week_2_nguyenchicuong.converter;
 
 import jakarta.persistence.AttributeConverter;
 import jakarta.persistence.Converter;
+import vn.edu.iuh.fit.lab_week_2_nguyenchicuong.enums.ProductStatus;
+
 
 import java.util.stream.Stream;
 //Xử lí cho việc chuyển từ emum sang interger

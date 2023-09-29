@@ -1,10 +1,13 @@
 package vn.edu.iuh.fit.lab_week_2_nguyenchicuong.models;
 
-import java.time.LocalDateTime;
-import java.util.List;
-
+import jakarta.json.bind.annotation.JsonbDateFormat;
 import jakarta.persistence.*;
+import vn.edu.iuh.fit.lab_week_2_nguyenchicuong.converter.EmployeeStatusConverter;
 import vn.edu.iuh.fit.lab_week_2_nguyenchicuong.enums.EmployeeStatus;
+
+
+import java.time.LocalDateTime;
+
 
 @Entity
 @Table(name = "employee")
@@ -17,7 +20,8 @@ public class Employee {
     @Column(name = "full_name", columnDefinition = "varchar(255)",nullable = false)
     private String fullName;
 
-    @Column(name = "dob", columnDefinition = "datetime(6)")
+    @Column(name = "dob", columnDefinition = "datetime(6)",nullable = false)
+    @JsonbDateFormat(value = "yyyy-MM-dd")
     private LocalDateTime dob;
 
     @Column(name = "email", columnDefinition = "varchar(150)",nullable = true)
@@ -29,10 +33,10 @@ public class Employee {
     @Column(name = "address", columnDefinition = "varchar(250)",nullable = false)
     private String address;
 
-    @Column(name = "status",nullable = false)
-    @Enumerated(EnumType.ORDINAL)
+    @Column(name = "status",nullable = false,columnDefinition = "int(11)")
+    @Convert(converter = EmployeeStatusConverter.class)
     private EmployeeStatus status;
-//    @OneToMany(mappedBy = "order_id")
+//    @OneToMany(mappedBy = "employee")
 //    private List<Order> orderList;
     public Employee() {
     }
@@ -49,6 +53,15 @@ public class Employee {
         this.phone = phone;
         this.address = address;
         this.status=status;
+    }
+
+    public Employee(String fullName, LocalDateTime dob, String email, String phone, String address, EmployeeStatus status) {
+        this.fullName = fullName;
+        this.dob = dob;
+        this.email = email;
+        this.phone = phone;
+        this.address = address;
+        this.status = status;
     }
 
     public Long getEmpId() {

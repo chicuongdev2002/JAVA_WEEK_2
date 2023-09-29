@@ -1,9 +1,9 @@
-package vn.edu.iuh.fit.lab_week_2_nguyenchicuong.enums;
+package vn.edu.iuh.fit.lab_week_2_nguyenchicuong.converter;
 
 import jakarta.persistence.AttributeConverter;
-import jakarta.persistence.Convert;
 import jakarta.persistence.Converter;
-import vn.edu.iuh.fit.lab_week_2_nguyenchicuong.models.Employee;
+import vn.edu.iuh.fit.lab_week_2_nguyenchicuong.enums.EmployeeStatus;
+
 
 import java.util.stream.Stream;
 //Xử lí chuyển đổi từ Enum sang Interger

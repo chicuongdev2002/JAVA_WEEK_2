@@ -1,7 +1,9 @@
 package vn.edu.iuh.fit.lab_week_2_nguyenchicuong.models;
 
 import jakarta.persistence.*;
+import vn.edu.iuh.fit.lab_week_2_nguyenchicuong.converter.ProductStatusConverter;
 import vn.edu.iuh.fit.lab_week_2_nguyenchicuong.enums.ProductStatus;
+
 
 import java.io.Serializable;
 import java.util.List;
@@ -18,13 +20,17 @@ public class Product implements  Serializable {
     private String manufactuner;
     @Column(name = "name",columnDefinition = "varchar(150)")
     private String name;
-    @Enumerated(EnumType.ORDINAL) // Đánh dấu là sử dụng Enum
+
     @Column(name = "status",columnDefinition = "int(11)")
+    @Convert(converter = ProductStatusConverter.class)
     private ProductStatus status;
     @Column(name = "unit",columnDefinition = "varchar(25)")
     private String unit;
-    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "product")
     private List<ProductImage> images;
+//    @OneToMany(mappedBy = "product", fetch = FetchType.LAZY)
+//    private List<OrderDetail> orderDetails;
+
 
 
 

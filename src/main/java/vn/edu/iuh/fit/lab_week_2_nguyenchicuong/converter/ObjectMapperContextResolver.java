@@ -1,4 +1,4 @@
-package vn.edu.iuh.fit.lab_week_2_nguyenchicuong.enums;
+package vn.edu.iuh.fit.lab_week_2_nguyenchicuong.converter;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
