@@ -1,0 +1,1 @@
+package vn.edu.iuh.fit.lab_week_2_nguyenchicuong.reposities;import vn.edu.iuh.fit.lab_week_2_nguyenchicuong.models.Product;public class ProductRepository extends CRUDRepository<Product, Long> {    public ProductRepository(Class<Product> enityClass) {        super(enityClass);    }}

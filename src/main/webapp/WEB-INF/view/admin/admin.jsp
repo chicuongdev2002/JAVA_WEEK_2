@@ -13,8 +13,8 @@
 <body>
 <ul>
     <li><a href="#">Trang chu</a></li>
-    <li><a href="#">Danh sach khach hang</a></li>
-    <li><a href="listEmployee.jsp">Danh sach nhan vien</a></li>
+    <li><a href="customer-severlet?">Danh sach khach hang</a></li>
+    <li><a href="employeeSeverlet">Danh sach nhan vien</a></li>
     <li><a href="#">Khác</a></li>
 </ul>
 </body>

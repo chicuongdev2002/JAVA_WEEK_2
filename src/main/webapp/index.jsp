@@ -1,3 +1,11 @@
+<%@ page import="vn.edu.iuh.fit.lab_week_2_nguyenchicuong.models.Product" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="vn.edu.iuh.fit.lab_week_2_nguyenchicuong.enums.ProductStatus" %>
+<%@ page import="vn.edu.iuh.fit.lab_week_2_nguyenchicuong.reposities.ProductRepository" %>
+<%@ page import="java.util.List" %>
+<%@ page import="vn.edu.iuh.fit.lab_week_2_nguyenchicuong.reposities.ProductPriceRepository" %>
+<%@ page import="vn.edu.iuh.fit.lab_week_2_nguyenchicuong.models.ProductPrice" %>
+<%@ page import="java.text.DecimalFormat" %>
 <%@ page contentType="text/html; charset=UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -6,131 +14,110 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Shop</title>
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="view/css/index.css" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    body, h1, h2, h3, p, ul, li {
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Thiết lập font chung cho trang */
+    body {
+      font-family: 'Arial', sans-serif;
+    }
+
+    /* Header và menu */
+    header {
+      background-color: #333; /* Màu nền header */
+      padding: 10px 0;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20px;
+    }
+
+    .logo {
+      color: #fff; /* Màu chữ logo */
+      font-size: 1.5em;
+      text-decoration: none;
+    }
+
+    .nav-menu {
+      list-style-type: none;
+      display: flex;
+    }
+
+    .nav-item {
+      margin-right: 20px;
+    }
+
+    .nav-link {
+      color: #fff; /* Màu chữ menu */
+      text-decoration: none;
+      font-size: 1.1em;
+      font-weight: bold;
+    }
+
+    .nav-link:hover {
+      color: #ff5733; /* Màu chữ menu khi hover */
+    }
+  </style>
+
+
+
 </head>
 <body>
 <!-- header -->
 <header>
   <nav>
-    <div class="img-nav">
-      <img src="img/logo.png" alt="" />
-    </div>
-    <div class="content-nav">
-      <ul>
-        <li><a href="#">Trang chủ</a></li>
-        <li><a href="#">Sản Phẩm</a></li>
-        <li><a href="view/admin/admin.jsp">Admin</a></li>
-        <li><a href="#">Khác</a></li>
-      </ul>
-      <form>
-        <input type="text" name="search" placeholder="Tìm kiếm sản phẩm" />
-        <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
-      </form>
-    </div>
-    <!-- The Modal -->
-    <button id="cart">
-      <i class="fa fa-shopping-basket" aria-hidden="true"></i>
-    Giỏ hàng
-    </button>
-    <div id="myModal" class="modal">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Giỏ hàng</h5>
-          <span class="close">&times;</span>
-        </div>
-        <div class="modal-body">
-          <div class="cart-row">
-            <span class="cart-item cart-header cart-column">Sản phẩm</span>
-            <span class="cart-price cart-header cart-column">Giá</span>
-            <span class="cart-quantity cart-header cart-column">Số Lượng</span>
-          </div>
-          <div class="cart-items">
-
-          </div>
-          <div class="cart-total">
-            <strong class="cart-total-title">Tổng tiền:</strong>
-            <span class="cart-total-price">0VN?</span>
-          </div>
-        </div>
-
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary close-footer">Đóng</button>
-          <button type="button" class="btn btn-primary order">Thanh Toán</button>
-        </div>
-      </div>
-    </div>
+    <ul class="nav-menu">
+      <li class="nav-item"><a href="#" class="nav-link">Trang chủ</a></li>
+      <li class="nav-item"><a href="#" class="nav-link">Sản Phẩm</a></li>
+      <li class="nav-item"><a href="admin-severlet" class="nav-link">Admin</a></li>
+      <li class="nav-item"><a href="#" class="nav-link">Khác</a></li>
+    </ul>
   </nav>
 </header>
 <!-- content -->
 <section class="wrapper">
-  <div class="products">
-    <ul>
-      <li class="main-product">
-        <div class="img-product">
-          <img class="img-prd"
-               src="https://hc.com.vn/i/ecommerce/media/GS.008514_FEATURE_93821.jpg"
-               alt="">
+  <h1 class="text-center mb-3 mt-3"> Danh mục sản phẩm</h1>
+  <div class="row" id="product">
+    <%
+      ProductRepository productRepository=new ProductRepository(Product.class);
+      ProductPriceRepository productPriceRepository=new ProductPriceRepository(ProductPrice.class);
+      List<Product> list = productRepository.getAll();
+      for (Product product : list) {
+        if (product.getStatus().equals(ProductStatus.ACTIVE)) {
+          System.out.println(product.getImages().get(0).getPath());
+    %>
+    <div class="col-md-3">
+      <div class="card" >
+        <img src="<%=product.getImages().get(0).getPath()%>" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title"> <%=product.getName()%></h5>
+          <p class="card-text"><%=product.getDescription()%></p>
+
+          <%
+            DecimalFormat decimalFormat = new DecimalFormat("#,###.##"); // Định dạng số
+            String formattedPrice = decimalFormat.format(productPriceRepository.getPriceById(product.getProduct_id()));
+          %>
+          <p class="card-text">
+            <span class="fw-bold product-price" style="color: #ff5733;">₫<%=formattedPrice%></span>
+          </p>
+<%--          <a href="CartController?action=addToCart&id=<%=%>" class="btn btn-primary">Thêm vào giỏ hàng</a>--%>
         </div>
-        <div class="content-product">
-          <h3 class="content-product-h3">Tên</h3>
-          <div class="content-product-deltals">
-            <div class="price">
-              <span class="money">Giá</span>
-            </div>
-            <button type="button" class="btn btn-cart">Thêm vào giỏ</button>
-          </div>
-        </div>
-      </li>
-      <li class="main-product">
-        <div class="img-product">
-          <img class="img-prd"
-               src="https://techland.com.vn/wp-content/uploads/2019/09/dien-thoai-iphone-11-pro-max-4.jpg"
-               alt="">
-        </div>
-        <div class="content-product">
-          <h3 class="content-product-h3">Tên sản phẩm</h3>
-          <div class="content-product-deltals">
-            <div class="price">
-              <span class="money">Giá?</span>
-            </div>
-            <button type="button" class="btn btn-cart">Thêm vào giỏ</button>
-          </div>
-        </div>
-      </li>
-      <li class="main-product">
-        <div class="img-product">
-          <img class="img-prd"
-               src="https://cdn.nguyenkimmall.com/images/detailed/756/dien-thoai-iphone-13-pro-128gb-bac-1.jpg"
-               alt="">
-        </div>
-        <div class="content-product">
-          <h3 class="content-product-h3">Tên sản phẩm</h3>
-          <div class="content-product-deltals">
-            <div class="price">
-              <span class="money">Giá</span>
-            </div>
-            <button type="button" class="btn btn-cart">Thêm vào giỏ</button>
-          </div>
-        </div>
-      </li>
-      <li class="main-product no-margin">
-        <div class="img-product">
-          <img class="img-prd"
-               src="https://prices.vn/photos/8/product/dien-thoai-iphone-xs-64gb.jpg"
-               alt="">
-        </div>
-        <div class="content-product">
-          <h3 class="content-product-h3">Tên sản phẩm</h3>
-          <div class="content-product-deltals">
-            <div class="price">
-              <span class="money">Giá</span>
-            </div>
-            <button type="button" class="btn btn-cart">Thêm vào giỏ</button>
-          </div>
-        </div>
-      </li>
-    </ul>
+      </div>
+    </div>
+    <%
+        }}
+    %>
   </div>
 </section>
 <!-- footer -->
@@ -140,10 +127,10 @@
       <img src="img/logo.png" alt="" />
     </div>
     <div class="social-footer">
-      <li><a target="_blank" href="https://www.facebook.com/thanhlongdev">
+      <li><a target="_blank" href="">
         <i class="fa fa-facebook-square" aria-hidden="true"></i>
       </a></li>
-      <li><a target="_blank" href="https://github.com/long1211">
+      <li><a target="_blank" href="">
         <i class="fa fa-github-square" aria-hidden="true"></i>
       </a></li>
 

@@ -1,0 +1,1 @@
+package vn.edu.iuh.fit.lab_week_2_nguyenchicuong.reposities;public class ProductImageRepository {}

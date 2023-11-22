@@ -148,7 +148,7 @@
             <td><%=employee.getStatus()%>
             </td>
             <td>
-                <a href="EmployeeController?actions=delete&empId=<%=employee.getEmpId()%>"
+                <a href="employeeSeverlet?action=delete&empId=<%=employee.getEmpId()%>"
                    class="btn btn-danger"><i class="fas fa-trash"></i></a>
             </td>
         </tr>
