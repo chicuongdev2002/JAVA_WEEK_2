@@ -105,9 +105,67 @@
     .btn-danger:hover {
       background-color: #c82333;
     }
+    body, h1, h2, h3, p, ul, li {
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Thiết lập font chung cho trang */
+    body {
+      font-family: 'Arial', sans-serif;
+    }
+
+    /* Header và menu */
+    header {
+      background-color: #333; /* Màu nền header */
+      padding: 10px 0;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20px;
+    }
+
+    .logo {
+      color: #fff; /* Màu chữ logo */
+      font-size: 1.5em;
+      text-decoration: none;
+    }
+
+    .nav-menu {
+      list-style-type: none;
+      display: flex;
+    }
+
+    .nav-item {
+      margin-right: 20px;
+    }
+
+    .nav-link {
+      color: #fff; /* Màu chữ menu */
+      text-decoration: none;
+      font-size: 1.1em;
+      font-weight: bold;
+    }
+
+    .nav-link:hover {
+      color: #ff5733; /* Màu chữ menu khi hover */
+    }
   </style>
 </head>
 <body>
+<header>
+  <nav>
+    <ul class="nav-menu">
+      <li class="nav-item"><a href="#" class="nav-link">Trang chủ</a></li>
+      <li class="nav-item"><a href="#" class="nav-link">Sản Phẩm</a></li>
+      <li class="nav-item"><a href="admin-severlet" class="nav-link">Admin</a></li>
+      <li class="nav-item"><a href="#" class="nav-link">Khác</a></li>
+    </ul>
+  </nav>
+</header>
 <div style="padding: 20px;">
   <table class="table table-bordered">
     <thead>
@@ -127,7 +185,7 @@
       if (list != null) {
     %>
     <%
-      int stt=0;
+      int stt=1;
       for (Customer cus : list) {
     %>
     <tr>

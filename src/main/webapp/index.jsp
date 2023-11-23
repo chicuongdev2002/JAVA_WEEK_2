@@ -68,6 +68,34 @@
     .nav-link:hover {
       color: #ff5733; /* Màu chữ menu khi hover */
     }
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+    }
+
+    .cart-container {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      padding: 10px;
+    }
+
+    .cart-icon {
+      position: relative;
+      cursor: pointer;
+    }
+
+    #cart-count {
+      position: absolute;
+      top: -10px;
+      right: -10px;
+      background-color: red;
+      color: white;
+      border-radius: 50%;
+      padding: 5px 8px;
+      font-size: 12px;
+    }
+
   </style>
 
 
@@ -83,6 +111,22 @@
       <li class="nav-item"><a href="admin-severlet" class="nav-link">Admin</a></li>
       <li class="nav-item"><a href="#" class="nav-link">Khác</a></li>
     </ul>
+    <div class="cart-container">
+      <a href="cart-severlet?action=viewToCart">
+        <div class="cart-icon" id="cart-icon">
+          🛒
+          <%
+            Integer count = (Integer) request.getAttribute("count");
+            if (count != null) {
+              out.print(count.intValue());
+            } else {
+              count =0;
+            }
+          %>
+          <span id="cart-count"><%=count%></span>
+        </div>
+      </a>
+    </div>
   </nav>
 </header>
 <!-- content -->
@@ -111,7 +155,7 @@
           <p class="card-text">
             <span class="fw-bold product-price" style="color: #ff5733;">₫<%=formattedPrice%></span>
           </p>
-<%--          <a href="CartController?action=addToCart&id=<%=%>" class="btn btn-primary">Thêm vào giỏ hàng</a>--%>
+          <a href="cart-severlet?action=addToCart&id=<%=product.getProduct_id()%>" class="btn btn-primary">Thêm vào giỏ hàng</a>
         </div>
       </div>
     </div>

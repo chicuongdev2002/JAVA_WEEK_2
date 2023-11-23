@@ -18,14 +18,8 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import vn.edu.iuh.fit.lab_week_2_nguyenchicuong.enums.EmployeeStatus;
 import vn.edu.iuh.fit.lab_week_2_nguyenchicuong.enums.ProductStatus;
-import vn.edu.iuh.fit.lab_week_2_nguyenchicuong.models.Customer;
-import vn.edu.iuh.fit.lab_week_2_nguyenchicuong.models.Employee;
-import vn.edu.iuh.fit.lab_week_2_nguyenchicuong.models.Product;
-import vn.edu.iuh.fit.lab_week_2_nguyenchicuong.models.ProductPrice;
-import vn.edu.iuh.fit.lab_week_2_nguyenchicuong.reposities.CustomerRepository;
-import vn.edu.iuh.fit.lab_week_2_nguyenchicuong.reposities.EmployeeRepository;
-import vn.edu.iuh.fit.lab_week_2_nguyenchicuong.reposities.ProductPriceRepository;
-import vn.edu.iuh.fit.lab_week_2_nguyenchicuong.reposities.ProductRepository;
+import vn.edu.iuh.fit.lab_week_2_nguyenchicuong.models.*;
+import vn.edu.iuh.fit.lab_week_2_nguyenchicuong.reposities.*;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
@@ -38,6 +32,16 @@ public class test {
 //        System.out.println(c.getAll());
         ProductRepository productRepository =new ProductRepository(Product.class);
         ProductPriceRepository productPriceRepository =new ProductPriceRepository(ProductPrice.class);
-        System.out.println(productPriceRepository.getPriceById(1));
+        ProductImageRepository productImageRepository =new ProductImageRepository();
+        System.out.println(productImageRepository.getImageById(1));
+//        System.out.println(productPriceRepository.getPriceById(1));
+//        Product product1 = productRepository.getById(1);
+//        Product product2 = productRepository.getById(2);
+//        Cart cart = new Cart();
+//   cart.setProducts(new ArrayList<>());
+//        System.out.println(cart.getProducts().add(product1));
+//        System.out.println(cart.getProducts().add(product2));
+//        System.out.println(cart);
+
     }
 }
